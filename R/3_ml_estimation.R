@@ -74,7 +74,7 @@ mle <- function(y, X = NULL, Z = NULL, count = ripo,
   llaux <- function(par) ll(par, y, X, Z, count)
 
   # Score function
-  Uaux <- if (no_grad) NULL else Uscore(par, y, X, Z, count)
+  Uaux <- if (no_grad) NULL else function(par) Uscore(par, y, X, Z, count)
 
   opt <- suppressWarnings(stats::optim(par = start,
                                        fn = llaux,
