@@ -51,7 +51,6 @@ mle <- function(y, X = NULL, Z = NULL, count = ripo,
   maxit <- control$maxit
   hessian <- control$hessian
   trace <- control$trace
-  no_grad <- FALSE
   start  <- control$start
 
   control$start <- control$no_grad <- NULL
@@ -74,7 +73,11 @@ mle <- function(y, X = NULL, Z = NULL, count = ripo,
   llaux <- function(par) ll(par, y, X, Z, count)
 
   # Score function
-  Uaux <- if (no_grad) NULL else function(par) Uscore(par, y, X, Z, count)
+  if (family$has_dl) {
+    Uaux <- function(par) Uscore(par, y, X, Z, count)
+  }  else {
+    Uaux <- NULL
+  }
 
   opt <- suppressWarnings(stats::optim(par = start,
                                        fn = llaux,
