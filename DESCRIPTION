@@ -1,0 +1,18 @@
+Package: mvcount
+Type: Package
+Title: Mean and Variance Count Regression Models 
+Version: 0.0.1
+Author: person("Rodrigo", "M. R. de Medeiros",
+    email = "rodrigo.matheus@live.com",
+    role = c("aut", "cre"))
+Maintainer: Rodrigo M. R. de Medeiros <rodrigo.matheus@live.com>
+Description: Explore and analyze count data with regression models based on distributions
+    parameterized in terms of mean and variance parameters. The 'mvcount' package provides tools for
+    estimating model parameters via maximum likelihood and diagnostic analysis using goodness-of-fit
+    metrics and residual analysis. The implemented models are suitable for various applications with 
+    distributions that handle overdispersed, equidispersed, or underdispersed count data, in 
+    addition to achieving deflation or inflation of zeros concerning the Poisson distribution.
+License: GPL (>= 3)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.3
