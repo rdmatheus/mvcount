@@ -4,7 +4,7 @@
 \alias{control_fit}
 \title{Optimization Control Parameters Passed to \code{optim}}
 \usage{
-control_fit(method = "BFGS", maxit = 2000, hessian = FALSE, start = NULL, ...)
+control_fit(method = "BFGS", maxit = 2000, hessian = TRUE, start = NULL, ...)
 }
 \arguments{
 \item{method}{the method to be used. See 'Details' in \code{\link[stats]{optim}}. The default

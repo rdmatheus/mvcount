@@ -64,7 +64,7 @@ ll <- function(par, y, X, Z = NULL, count = ripo){
     nu <- par[p + k + family$npar - 2]
   }
 
-  if(any(!is.finite(mu)) | any(!is.finite(sigma2))){
+  if(any(!is.finite(mu)) | any(!is.finite(sigma2)) | any(!family$constraint(mu, sigma2))){
     NaN
   }else {
     sum(ddist(y, mu = mu, sigma2 = sigma2, nu = nu, log.p = TRUE))

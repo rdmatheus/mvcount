@@ -512,9 +512,7 @@ residuals.mvreg <- function(object,
   rqr <- function(y){
 
       n <- length(y)
-      a <- vector()
-      b <- vector()
-      u <- vector()
+      a <- b <- u <- rep(0L, n)
       for(i in 1:n){
         a[i] <- pdist(y[i] - 1, mu[i], sigma2 = sigma2[i], nu = nu)
         b[i] <- pdist(y[i], mu[i], sigma2 = sigma2[i], nu = nu)

@@ -27,7 +27,7 @@
 #'
 #' @return A list with the arguments specified.
 #' @export
-control_fit <- function(method = "BFGS", maxit = 2000, hessian = FALSE, start = NULL, ...)
+control_fit <- function(method = "BFGS", maxit = 2000, hessian = TRUE, start = NULL, ...)
 {
   rval <- list(method = method, maxit = maxit, hessian = hessian, start = start)
 
