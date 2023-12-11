@@ -30,6 +30,7 @@ The current available count distributions can be seen below.
  Bell-Touchard  \tab \code{"\link{beto}"}      \tab  2  \cr
  BerG  \tab \code{"\link{berg}"}      \tab  2  \cr
  Double Poisson  \tab \code{"\link{dbpo}"}      \tab  2  \cr
+ Generalized Poisson \tab \code{"\link{gpo}"}      \tab  2  \cr
  Negative binomial  \tab \code{"\link{nb}"}      \tab  2  \cr
  Poisson  \tab \code{"\link{po}"}      \tab  1  \cr
  Inflated Bernoulli \tab \code{"\link{ribe}"}      \tab  2  \cr
@@ -54,6 +55,9 @@ Bourguignon, M., and de Medeiros, R. M. (2022). A simple and useful regression m
  Castellares, F., Lemonte, A. J., and Moreno–Arenas, G. (2020). On the two-parameter
     Bell–Touchard discrete distribution. \emph{Communications in Statistics-Theory and Methods},
     \bold{49}, 4834-4852.
+
+Consul, P. C., and Jain, G. C. (1973). A generalization of the Poisson distribution.
+    \emph{Technometrics}, \bold{15}, 791-799.
 
  Joe, H., and Zhu, R. (2005). Generalized Poisson distribution: the property of
     mixture of Poisson and comparison with negative binomial distribution.
