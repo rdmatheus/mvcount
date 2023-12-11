@@ -66,8 +66,8 @@
 #' @examples
 #' n <- 10000
 #'
-#' mu <- 10
-#' sigma2 <- 7
+#' mu <- 2
+#' sigma2 <- 5
 #'
 #' y <- rdbpo(n, mu, sigma2)
 #'
@@ -111,7 +111,8 @@ ddbpo <- function(x, mu, sigma2, log.p = FALSE, ...){
   # Positive pmf index
   id <- which(!is.nan(pmf), arr.ind = TRUE)
 
-  pmf[id] <- gamlss.dist::dDPO(x = x[id], mu = mu[id], sigma = phi[id], log = TRUE)
+  if (length(id) != 0)
+    pmf[id] <- gamlss.dist::dDPO(x = x[id], mu = mu[id], sigma = phi[id], log = TRUE)
 
   if(!log.p) pmf <- exp(pmf)
 
@@ -144,7 +145,8 @@ pdbpo <- function(q, mu, sigma2, lower.tail = TRUE, log.p = FALSE, ...)
   # Positive pmf index
   id <- which(q >= 0 & !is.nan(cdf), arr.ind = TRUE)
 
-  cdf[id] <- gamlss.dist::pDPO(q = q[id], mu = mu[id], sigma = phi[id])
+  if (length(id) != 0)
+    cdf[id] <- gamlss.dist::pDPO(q = q[id], mu = mu[id], sigma = phi[id])
 
   if(!lower.tail) cdf <- 1 - cdf
   if(log.p) cdf <- log(cdf)
@@ -178,7 +180,8 @@ qdbpo <- function(p, mu, sigma2, lower.tail = TRUE, ...)
   qtl[which(mu <= 0 | phi <= 0, arr.ind = TRUE)] <- NaN
 
   id <- which(!is.nan(qtl), arr.ind = TRUE)
-  qtl[id] <- gamlss.dist::qDPO(p[id], mu = mu[id], sigma = phi[id])
+  if (length(id) != 0)
+    qtl[id] <- gamlss.dist::qDPO(p[id], mu = mu[id], sigma = phi[id])
 
   as.numeric(qtl)
 }
@@ -230,7 +233,7 @@ dbpo <- function(mu.link = "log", sigma2.link = "log"){
     beta0 <- solve(t(X)%*%X)%*%t(X)%*%g1(x + 0.1)
     mu0 <- g1.inv(X%*%beta0)
 
-    sigma0 <- mean(mu0) / (stats::var(x) - mean(mu0))
+    sigma0 <- stats::var(x) + max(mu0)
     gamma0 <- c(g2(sigma0), rep(0, k - 1))
     c(beta0, gamma0)
 

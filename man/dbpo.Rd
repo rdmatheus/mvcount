@@ -86,8 +86,8 @@ This set of functions represents the probability mass function, the cumulative
 \examples{
 n <- 10000
 
-mu <- 10
-sigma2 <- 7
+mu <- 2
+sigma2 <- 5
 
 y <- rdbpo(n, mu, sigma2)
 
