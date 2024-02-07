@@ -126,7 +126,7 @@ g4 <-  mutate(couple, grp_anxiety = cut(anxiety, breaks = c(min(anxiety) - 0.5,
 (g1 + g2) / (g3 + g4)
 ```
 
-<img src="man/figures/README-data transformation and visualization-1.png" width="80%" style="display: block; margin: auto;" />
+<img src="man/figures/README-data_transformation_and_visualization-1.png" width="100%" style="display: block; margin: auto;" />
 
 We consider the following systematic components $$
 \begin{array}{ll}
@@ -193,17 +193,18 @@ goodness
 #> AIC       1265.2743 1265.2745 1264.6070 2782.3904 1616.1215 1273.7650 1296.9707
 #> BIC       1289.0248 1289.0251 1288.3576 2794.2656 1639.8720 1297.5155 1320.7213
 #> pseudo-R2    0.9987    0.9987    0.9987    0.1679    0.9798    0.9956    0.9856
-#> Upsilon      0.0504    0.0496    0.0492       Inf    0.1861    0.0621    0.0875
+#> Upsilon      0.0469    0.0493    0.0492       Inf    0.1845    0.0622    0.0857
 #>                berg      beto
 #> AIC       1265.2743 1349.2345
 #> BIC       1289.0248 1372.9851
 #> pseudo-R2    0.9987    0.9847
-#> Upsilon      0.0479    0.1336
+#> Upsilon      0.0465    0.1329
 ```
 
 The normal probability plot with a simulated confidence region of the
-quantile residuals can be accessed with the `envelope()` function. Below
-we show the envelope graphs for each of the fits.
+randomized quantile residuals (Dunn and Smyth, 1996) can be accessed
+with the `envelope()` function. Below we show the envelope graphs for
+each of the fits.
 
 ``` r
 # Envelope plots
@@ -239,7 +240,7 @@ plot(envel_berg, main = "BerG")
 plot(envel_beto, main = "BeTO")
 ```
 
-<img src="man/figures/README-envelope plots-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="man/figures/README-envelope_plots-1.png" width="100%" style="display: block; margin: auto;" />
 
 ``` r
 par(mfrow = op)
@@ -285,8 +286,8 @@ summary(fit)
 #>     count = "ripo")
 #> 
 #> Summary for quantile residuals:
-#>       Mean Std. dev. Skewness Kurtosis
-#>   0.015331  1.007974 0.024745 3.171676
+#>        Mean Std. dev. Skewness Kurtosis
+#>   -0.012028  1.010472 0.069618 3.205158
 #> 
 #> ---------------------------------------------------------------
 #> Mean model with log link:
@@ -314,7 +315,7 @@ summary(fit)
 #> ---------------------------------------------------------------
 #> Log-lik value: -627.0277 
 #> AIC: 1264.055 and BIC: 1283.847 
-#> Upsilon statistic: 0.04920837 
+#> Upsilon statistic: 0.04859505 
 #> Pseudo-R2: 0.9986106
 
 # Randomized quantile residuals graphical summary
@@ -322,7 +323,7 @@ layout(matrix(c(1, 3, 5, 2, 4, 5), 3, 2))
 plot(fit, which = 1:5, ask = FALSE)     
 ```
 
-<img src="man/figures/README-final fit-1.png" width="60%" style="display: block; margin: auto;" />
+<img src="man/figures/README-final_fit-1.png" width="100%" style="display: block; margin: auto;" />
 
 ``` r
 layout(1)
@@ -336,3 +337,38 @@ methods(class = "mvreg")
 #>  [6] predict      print        residuals    summary      vcov        
 #> see '?methods' for accessing help and source code
 ```
+
+## References
+
+Bourguignon M and Medeiros RMR de (2022) A simple and useful regression
+model for fitting count data. *TEST* **31**, 790–827.
+
+Castellares F, Lemonte AJ, and Moreno–Arenas G (2020) On the
+two-parameter Bell–Touchard discrete distribution. *Communications in
+Statistics-Theory and Methods* **49**, 4834–4852.\*
+
+Consul PC and Jain GC (1973) A generalization of the Poisson
+distribution. *Technometrics* **15**, 791–799.
+
+Cupach, WR and Spitzberg, BH (2004). *The Dark Side of Relationship
+Pursuit: From Attraction to Obsession and Stalking*, 2nd ed. Lawrence
+Erlbaum Associates, Mahwah, NJ.
+
+Dunn PK and Smyth GK (1996) Randomized quantile residuals. *Journal of
+Computational and Graphical Statistics* **5**, 236–244.
+
+Kokonendji CC, Medeiros RMR and Bourguignon M (2024) Mean and variance
+for count regression models based on reparameterized distributions.
+*Sankhya B* to appear.
+
+Lemonte AJ (2022) On the mean-parameterized Bell–Touchard regression
+model for count data. *Applied Mathematical Modelling* **105**, 1–16.
+
+Loeys T, Moerkerke B, De Smet O and Buysse A (2012) The analysis of
+zero-inflated count data: Beyond zero-inflated Poisson regression.
+*British Journal of Mathematical and Statistical Psychology* **65**,
+163–180.
+
+Rigby RA, Stasinopoulos MD, Heller GZ and De Bastiani F (2019)
+*Distributions for Modeling Location, Scale, and Shape: Using GAMLSS in
+R*. CRC Press.

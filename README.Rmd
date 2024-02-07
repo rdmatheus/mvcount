@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
   message = FALSE,
   fig.width = 8,
   fig.asp = 0.818,
-  out.width = "80%",
+  out.width = "100%",
   fig.align = "center"
 )
 ```
@@ -52,7 +52,7 @@ data("couple", package = "COMPoissonReg")
 
 The dependent variable (`UPB`) is a discrete measure of the extent of unwanted pursuit behavior perpetrations displayed since the time the couple broke up for 387 individuals. Measurements are made using the Relational Pursuit-Pursuer Short Form (Cupach and Spitzberg, 2004). The explanatory variables consist of an indicator for the education level, where "1" indicates at least a bachelor's degree, and a continuous measure of anxious attachment (`anxiety`). For more details, run `help("couple", package = "COMPoissonReg")`.
 
-```{r data transformation and visualization, message=FALSE, warning=FALSE}
+```{r data_transformation_and_visualization, message=FALSE, warning=FALSE}
 # Packages
 library(tidyverse) # For data manipulation and visualization
 library(patchwork) # Put ggplot graphs side by side
@@ -167,9 +167,8 @@ goodness
 
 ```
 
-The normal probability plot with a simulated confidence region of the quantile residuals can be
-accessed with the `envelope()` function. Below we show the envelope graphs for each of the fits.
-```{r envelope plots, out.width="100%", fig.asp=1}
+The normal probability plot with a simulated confidence region of the randomized quantile residuals (Dunn and Smyth, 1996) can be accessed with the `envelope()` function. Below we show the envelope graphs for each of the fits.
+```{r envelope_plots, out.width="100%", fig.asp=1}
 # Envelope plots
 envel_rige <- envelope(fit_rige, plot = FALSE)
 envel_ribe <- envelope(fit_ribe, plot = FALSE)
@@ -201,7 +200,7 @@ $$
 \log(\sigma_i^2) = \gamma_0 + \gamma_1 \texttt{education}_i + \gamma_2 \texttt{anxiety}_i,
 $$
 To fit the final model, run:
-```{r final fit, fig.width=6, fig.asp=1.7, out.width="60%"}
+```{r final_fit, fig.width=6.8, fig.asp=1.5, out.width="100%"}
 # Final model
 fit <- mvreg(UPB ~ anxiety | education + anxiety, data = couple, count = "ripo")
 
@@ -221,5 +220,30 @@ Currently, the methods implemented for `"mvreg"` objects are
 ```{r methods}
 methods(class = "mvreg")
 ```
+## References
 
+Bourguignon M and Medeiros RMR de (2022) A simple and useful regression model for
+fitting count data. *TEST* **31**, 790–827.
+
+Castellares F, Lemonte AJ, and Moreno–Arenas G (2020) On the two-parameter
+Bell–Touchard discrete distribution. *Communications in Statistics-Theory and Methods* **49**,
+4834–4852.*
+
+Consul PC and Jain GC (1973) A generalization of the Poisson distribution. *Technometrics* **15**,
+791–799.
+
+Cupach, WR and Spitzberg, BH (2004). *The Dark Side of Relationship Pursuit: From Attraction to Obsession and Stalking*, 2nd ed. Lawrence Erlbaum Associates, Mahwah, NJ.
+
+Dunn PK and Smyth GK (1996) Randomized quantile residuals. *Journal of Computational and Graphical Statistics* **5**, 236–244.
+
+Kokonendji CC, Medeiros RMR and Bourguignon M (2024) Mean and variance for count regression models
+based on reparameterized distributions. *Sankhya B* to appear. 
+
+Lemonte AJ (2022) On the mean-parameterized Bell–Touchard regression model for count
+data. *Applied Mathematical Modelling* **105**, 1–16.
+
+Loeys T, Moerkerke B, De Smet O and Buysse A (2012) The analysis of zero-inflated count
+data: Beyond zero-inflated Poisson regression. *British Journal of Mathematical and Statistical Psychology* **65**, 163–180.
+
+Rigby RA, Stasinopoulos MD, Heller GZ and De Bastiani F (2019) *Distributions for Modeling Location, Scale, and Shape: Using GAMLSS in R*. CRC Press.
 
